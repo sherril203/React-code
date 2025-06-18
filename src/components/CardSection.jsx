@@ -10,6 +10,9 @@ const CardSection = () => {
           image={aiImage}
           title="AI Powered Digital Marketing"
           description="100% Assured Placement + Stipend"
+          onClick={() =>
+            console.log("AI Powered Digital Marketing from Card 1")
+          }
         />
         <CardComponent
           image={aiImage}
