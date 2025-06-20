@@ -1,5 +1,3 @@
-import React from "react";
-
 const ChildComponent = () => {
   return (
     <>
@@ -10,19 +8,7 @@ const ChildComponent = () => {
   );
 };
 
-const ReactFragmentsExakmple = () => {
-  const data = ["vignesh", "vicy", "faisal", "tharun"];
-
-  const getData = data.map((value) => {
-    if (value == "faisal") {
-      return "faisal khan";
-    } else {
-      return value;
-    }
-  });
-
-  console.log(getData);
-
+const ReactFragmentsExample = () => {
   return (
     <ul>
       <ChildComponent />
@@ -30,4 +16,4 @@ const ReactFragmentsExakmple = () => {
   );
 };
 
-export default ReactFragmentsExakmple;
+export default ReactFragmentsExample;

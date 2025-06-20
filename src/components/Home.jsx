@@ -1,3 +1,4 @@
+import { Component } from "react";
 import Navbar from "./Navbar";
 
 const Home = () => {
