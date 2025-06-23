@@ -7,7 +7,7 @@ import ReactFragmentsExakmple from "./components/ReactFragmentsExakmple";
 import StateComponent from "./components/StateComponent";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <StateComponent />
-  </StrictMode>
+  // <StrictMode>
+  <StateComponent />
+  // </StrictMode>
 );
