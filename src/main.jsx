@@ -6,9 +6,10 @@ import CardSection from "./components/CardSection";
 import ReactFragmentsExakmple from "./components/ReactFragmentsExakmple";
 import StateComponent from "./components/StateComponent";
 import List from "./components/ListAndKeys";
+import MemoExample from "./components/MemoExample";
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
-  <List />
+  <MemoExample />
   // </StrictMode>
 );
