@@ -17,18 +17,37 @@ const MemoExample = () => {
   const [todos, setTodos] = useState(["todo 1", "todo 2"]);
 
   const increment = () => {
-    setCount(count + 1);
+    // anonymous function
+    setCount(function (count) {
+      return count + 2;
+    });
+    // anonymous arrow function
+    setCount((count) => {
+      return count + 1;
+    });
+    // arrow function
+    const callback = (count) => {
+      return count + 2;
+    };
+    setCount(callback);
+    // named function
+    function callback2(count) {
+      return count + 1;
+    }
+    setCount(callback2);
+    // callback function
+    setCount((count) => count + 1);
   };
 
   console.log("Parent render");
 
   return (
     <>
-      <Todos todos={todos} />
-      <hr />
-      <div>
-        Count: {count}
-        <button onClick={increment}>+</button>
+      {/* <Todos todos={todos} /> */}
+      {/* <hr /> */}
+      <div className="w-full h-screen flex flex-col justify-center items-center gap-2">
+        <p>Count: {count}</p>
+        <button onClick={increment}>Increment</button>
       </div>
     </>
   );

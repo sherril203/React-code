@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { PureComponent, StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import AppComponent from "./App";
@@ -10,6 +10,6 @@ import MemoExample from "./components/MemoExample";
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
-  <MemoExample />
+  <List />
   // </StrictMode>
 );
