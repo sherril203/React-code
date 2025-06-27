@@ -7,9 +7,11 @@ import ReactFragmentsExakmple from "./components/ReactFragmentsExakmple";
 import StateComponent from "./components/StateComponent";
 import List from "./components/ListAndKeys";
 import MemoExample from "./components/MemoExample";
+import Parent from "./components/LifeCycleOfComponents";
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
-  <List />
+  <Parent />
+
   // </StrictMode>
 );
