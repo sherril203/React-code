@@ -12,35 +12,55 @@ const Parent = () => {
 
 const FunctionLifeCycle = () => {
   const [count, setCount] = useState(0);
-  const [name, setName] = useState("Vicky");
+  const [users, setUsers] = useState([]);
 
   //   useEffect(() => {
   //     console.log("useEffect trigger");
   //   });
 
+  const fetchUser = async () => {
+    console.log("fetch function triggers");
+    setUsers([{ id: 1, name: "Vicky", email: "vicky@gmail.com" }]);
+  };
+
   //component did mount
   useEffect(() => {
     console.log("component did mount");
+    fetchUser();
   }, []);
 
   //component did update
   useEffect(() => {
     console.log("component did update");
-  }, [count, name]);
+  }, [count]);
 
   //component will unmount
   useEffect(() => {
-    return () => console.log("Component will unmount");
+    console.log("component did update");
+    const counter = setInterval(() => {
+      console.log("trigger");
+      setCount((c) => c + 1);
+    }, 1000);
+
+    return () => {
+      console.log("Component will unmount");
+      clearInterval(counter);
+    };
   }, []);
 
-  console.log("component render");
+  // console.log("component render", users);
+
+  for (var i = 0; i < 3; i++) {
+    setTimeout(() => {
+      console.log(i);
+    });
+  }
 
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
       <p className="text-4xl font-bold">Count: {count}</p>
-      <p>{name}</p>
+      {/* <p>{}</p> */}
       <button onClick={() => setCount((c) => c + 1)}>Increment</button>
-      <button onClick={() => setName("Vignesh")}>Update</button>
     </div>
   );
 };
