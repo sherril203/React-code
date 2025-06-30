@@ -93,10 +93,44 @@ const ConditionalRenderingExample4 = () => {
   );
 };
 
-export default ConditionalRenderingExample4;
+// export default ConditionalRenderingExample4;
 
 // Traditional way of conditional rendering - if, if else, else if, switch
 
 // Ternary operator - condition ? true : false
 
 // Logical operator -&&, ||, !
+
+function SimpleGreeting() {
+  const now = new Date();
+  const hour = now.getHours();
+  const time = now.toLocaleTimeString();
+
+  // 1. IF condition
+  let greeting = "Hello!";
+  if (hour < 12) {
+    greeting = "Good Morning!";
+  } else if (hour < 18) {
+    greeting = "Good Afternoon!";
+  } else {
+    greeting = "Good Evening!";
+  }
+
+  // 2. Ternary for AM/PM
+  const period = hour >= 12 ? "PM" : "AM";
+
+  // 3. Logical operator
+  const showSleepMessage = hour >= 22;
+
+  return (
+    <div className="w-full h-screen flex flex-col justify-center items-center">
+      <h2>{greeting}</h2>
+      <p>
+        Current Time: {time} {period}
+      </p>
+      {showSleepMessage && <p>It’s late! Go to bed 😴</p>}
+    </div>
+  );
+}
+
+export default SimpleGreeting;
