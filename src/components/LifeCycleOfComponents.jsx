@@ -50,12 +50,6 @@ const FunctionLifeCycle = () => {
 
   // console.log("component render", users);
 
-  for (var i = 0; i < 3; i++) {
-    setTimeout(() => {
-      console.log(i);
-    });
-  }
-
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
       <p className="text-4xl font-bold">Count: {count}</p>

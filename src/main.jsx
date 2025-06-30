@@ -8,10 +8,11 @@ import StateComponent from "./components/StateComponent";
 import List from "./components/ListAndKeys";
 import MemoExample from "./components/MemoExample";
 import Parent from "./components/LifeCycleOfComponents";
+import ConditionalRenderingExample from "./components/ConditionalRendering";
 
 createRoot(document.getElementById("root")).render(
   // <StrictMode>
-  <Parent />
+  <ConditionalRenderingExample />
 
   // </StrictMode>
 );
