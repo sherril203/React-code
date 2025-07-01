@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const ConditionalRenderingExample = () => {
   const [condition, setCondition] = useState(true);
@@ -101,10 +101,23 @@ const ConditionalRenderingExample4 = () => {
 
 // Logical operator -&&, ||, !
 
+const Timer = () => {
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [time]);
+
+  return <p className="text-2xl font-semibold">{time.toLocaleTimeString()}</p>;
+};
+
 function SimpleGreeting() {
-  const now = new Date();
-  const hour = now.getHours();
-  const time = now.toLocaleTimeString();
+  const date = new Date();
+  const hour = date.getHours();
 
   // 1. IF condition
   let greeting = "Hello!";
@@ -122,12 +135,13 @@ function SimpleGreeting() {
   // 3. Logical operator
   const showSleepMessage = hour >= 22;
 
+  console.log("parent render");
+
   return (
-    <div className="w-full h-screen flex flex-col justify-center items-center">
+    <div className="w-full h-screen flex flex-col gap-4 justify-center items-center">
       <h2>{greeting}</h2>
-      <p>
-        Current Time: {time} {period}
-      </p>
+      <p>Period: {period}</p>
+      <Timer />
       {showSleepMessage && <p>It’s late! Go to bed 😴</p>}
     </div>
   );
