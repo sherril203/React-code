@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const ConditionalRenderingExample = () => {
   const [condition, setCondition] = useState(true);
@@ -143,6 +144,7 @@ function SimpleGreeting() {
       <p>Period: {period}</p>
       <Timer />
       {showSleepMessage && <p>It’s late! Go to bed 😴</p>}
+      <Link to={"/list"}>Navigate</Link>
     </div>
   );
 }
