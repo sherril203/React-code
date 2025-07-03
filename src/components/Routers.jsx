@@ -6,6 +6,7 @@ import AdminLayout from "./AdminLayout";
 import CardSection from "./CardSection";
 import SimpleGreeting from "./ConditionalRendering";
 import DynamicComponent from "./DynamicComponent";
+import UsersComponent, { UserDetails } from "./DynamicRouteExample";
 
 const Routers = () => {
   return (
@@ -22,6 +23,8 @@ const Routers = () => {
         <Route path="*" element={<h1>Page 404 not found</h1>} />
       </Route>
       <Route path="/cards/:id" element={<DynamicComponent />} />
+      <Route path="/users" element={<UsersComponent />} />
+      <Route path="/user/:id" element={<UserDetails />} />
     </Routes>
   );
 };
