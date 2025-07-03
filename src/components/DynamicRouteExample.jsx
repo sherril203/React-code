@@ -19,6 +19,14 @@ const getUserById = async (id) => {
   }
 };
 
+const Loader = () => {
+  return (
+    <div className="w-full h-screen flex flex-col justify-center items-center">
+      <div className="w-20 h-20 rounded-full border-4 border-t-transparent border-pink-500 animate-spin"></div>
+    </div>
+  );
+};
+
 export const UserDetails = () => {
   const { id } = useParams();
   const [user, setUser] = useState(null);
@@ -40,11 +48,7 @@ export const UserDetails = () => {
   }, [id]);
 
   if (loader) {
-    return (
-      <div className="w-full h-screen flex flex-col justify-center items-center">
-        <div className="w-20 h-20 rounded-full border-4 border-t-transparent border-pink-500 animate-spin"></div>
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
@@ -58,18 +62,26 @@ export const UserDetails = () => {
 
 const UsersComponent = () => {
   const [users, setUsers] = useState([]);
+  const [loader, setLoader] = useState(true);
 
   useEffect(() => {
     async function fetchUsers() {
+      setLoader(true);
       try {
         const data = await getUsers();
         setUsers(data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoader(false);
       }
     }
     fetchUsers();
   }, []);
+
+  if (loader) {
+    return <Loader />;
+  }
 
   return (
     <div className="w-full min-h-screen flex justify-center p-5 flex-col gap-4">
