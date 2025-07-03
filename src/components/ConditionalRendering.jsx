@@ -139,7 +139,7 @@ function SimpleGreeting() {
   console.log("parent render");
 
   return (
-    <div className="w-full h-screen flex flex-col gap-4 justify-center items-center">
+    <div className="w-full h-full flex flex-col gap-4 justify-center items-center">
       <h2>{greeting}</h2>
       <p>Period: {period}</p>
       <Timer />

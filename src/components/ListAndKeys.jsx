@@ -1,6 +1,7 @@
 import image from "../assets/stud.webp";
 import react from "../assets/react.svg";
 import { memo, useState } from "react";
+import { Link } from "react-router";
 
 export const Card = memo(({ id, image, name, email, handleDelete }) => {
   console.log("render");
@@ -15,6 +16,12 @@ export const Card = memo(({ id, image, name, email, handleDelete }) => {
       >
         Delete
       </button>
+      <Link
+        to={`/cards/${id}`}
+        className="px-4 py-1.5 bg-green-500 rounded text-white"
+      >
+        View
+      </Link>
     </div>
   );
 });
