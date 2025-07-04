@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useNavigate, useParams, useSearchParams } from "react-router";
 
 const getUsers = async () => {
   try {
@@ -53,7 +53,9 @@ export const UserDetails = () => {
 
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
-      <p className="truncate">Name: {user?.username}</p>
+      <p className="truncate">
+        Name: {user?.username ? user?.username : "User"}
+      </p>
       <p className="truncate">Email: {user?.email}</p>
       <p className="truncate">Phone: {user?.phone}</p>
     </div>
@@ -63,6 +65,7 @@ export const UserDetails = () => {
 const UsersComponent = () => {
   const [users, setUsers] = useState([]);
   const [loader, setLoader] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchUsers() {
@@ -83,6 +86,14 @@ const UsersComponent = () => {
     return <Loader />;
   }
 
+  const handleNavigate = (id) => {
+    if (1 == 2) {
+      navigate(`/user/${id}`);
+    } else {
+      navigate(`/main`);
+    }
+  };
+
   return (
     <div className="w-full min-h-screen flex justify-center p-5 flex-col gap-4">
       <h1 className="text-2xl font-semibold">Users List</h1>
@@ -94,12 +105,12 @@ const UsersComponent = () => {
           >
             <p className="truncate">Name: {value.username}</p>
             <p className="truncate">Email: {value.email}</p>
-            <Link
-              to={`/user/${value.id}`}
+            <button
               className="px-4 py-2 rounded bg-blue-500 text-white text-center"
+              onClick={() => handleNavigate(value.id)}
             >
               View more
-            </Link>
+            </button>
           </div>
         ))}
       </div>
