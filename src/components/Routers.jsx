@@ -7,6 +7,7 @@ import CardSection from "./CardSection";
 import SimpleGreeting from "./ConditionalRendering";
 import DynamicComponent from "./DynamicComponent";
 import UsersComponent, { UserDetails } from "./DynamicRouteExample";
+import ControlledComponents from "./ControlledComponents";
 
 const Routers = () => {
   return (
@@ -25,6 +26,7 @@ const Routers = () => {
       <Route path="/cards/:id" element={<DynamicComponent />} />
       <Route path="/users" element={<UsersComponent />} />
       <Route path="/user/:id" element={<UserDetails />} />
+      <Route path="/controlled" element={<ControlledComponents />} />
     </Routes>
   );
 };
