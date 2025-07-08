@@ -8,23 +8,32 @@ const ControlledComponents = () => {
     setEmail(event.target.value);
   };
 
-  console.log(email, "email");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email, "email");
+  };
 
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
       <h1>Controlled Form</h1>
       <p>{email}</p>
-      <form className="w-[40%] mx-auto my-10">
+      <form
+        className="w-[40%] mx-auto my-10"
+        onReset={() => setEmail("")}
+        onSubmit={handleSubmit}
+      >
         <input
           placeholder="Enter email"
           type="email"
           required
+          name="email"
           className="w-full p-2 outline-none rounded border border-blue-500"
           value={email}
           onChange={handleChange}
         />
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
       </form>
-      <button onClick={() => setEmail("")}>Clear</button>
     </div>
   );
 };
@@ -89,4 +98,4 @@ const ControlledComponents2 = () => {
   );
 };
 
-export default ControlledComponents2;
+export default ControlledComponents;
