@@ -4,7 +4,7 @@
 // PUT     http://localhost:5000/product/?id=1
 // DELETE  http://localhost:5000/product/?id=1
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ProductService from "./services";
 
 // Query - GET
@@ -37,13 +37,9 @@ const CreateProduct = () => {
       handleReset();
       console.log(response);
     } catch (error) {
-      console.warn("Error creating product:", error);
+      console.error("Error creating product:", error);
     }
   };
-
-  useEffect(() => {
-    ProductService.getProducts();
-  }, []);
 
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">

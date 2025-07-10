@@ -9,6 +9,12 @@ const ProductService = {
     const response = await axios.get("http://localhost:5000/v1/product");
     return response.data;
   },
+  async deleteProduct(id) {
+    const response = await axios.delete(
+      `http://localhost:5000/v1/product/?id=${id}`
+    );
+    return response.data;
+  },
 };
 
 export default ProductService;

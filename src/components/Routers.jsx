@@ -10,6 +10,7 @@ import UsersComponent, { UserDetails } from "./DynamicRouteExample";
 import ControlledComponents from "./ControlledComponents";
 import UncontrolledComponents from "./UncontrolledComponents";
 import CreateProduct from "./CRUD/CreateProduct";
+import GetProduct from "./CRUD/GetProduct";
 
 const Routers = () => {
   return (
@@ -32,6 +33,7 @@ const Routers = () => {
       <Route path="/uncontrolled" element={<UncontrolledComponents />} />
       {/* CRUD */}
       <Route path="/create-product" element={<CreateProduct />} />
+      <Route path="/get-product" element={<GetProduct />} />
     </Routes>
   );
 };
