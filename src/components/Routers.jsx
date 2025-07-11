@@ -11,6 +11,7 @@ import ControlledComponents from "./ControlledComponents";
 import UncontrolledComponents from "./UncontrolledComponents";
 import CreateProduct from "./CRUD/CreateProduct";
 import GetProduct from "./CRUD/GetProduct";
+import UpdateProduct from "./CRUD/UpdateProduct";
 
 const Routers = () => {
   return (
@@ -34,6 +35,7 @@ const Routers = () => {
       {/* CRUD */}
       <Route path="/create-product" element={<CreateProduct />} />
       <Route path="/get-product" element={<GetProduct />} />
+      <Route path="/update-product/:id" element={<UpdateProduct />} />
     </Routes>
   );
 };

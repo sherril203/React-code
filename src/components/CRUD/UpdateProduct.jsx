@@ -1,52 +1,53 @@
-// GET     http://localhost:5000/product
-// GET     http://localhost:5000/product/1
-// POST    http://localhost:5000/product
-// PUT     http://localhost:5000/product/?id=1
-// DELETE  http://localhost:5000/product/?id=1
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router";
 import ProductService from "./services";
-import { Link, useNavigate } from "react-router";
 
-// Query - GET
-// Mutation - POST, PUT, DELETE
+const UpdateProduct = () => {
+  const { id } = useParams();
 
-const CreateProduct = () => {
-  const initailState = {
+  const initialState = {
     name: "",
     price: "",
     model: "",
   };
 
-  const [productForm, setProductForm] = useState(initailState);
-  const navigate = useNavigate();
+  const [productForm, setProductForm] = useState(initialState);
 
   const handleChange = (e) => {
     setProductForm({ ...productForm, [e.target.name]: e.target.value });
   };
 
   const handleReset = () => {
-    setProductForm(initailState);
+    setProductForm(initialState);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(productForm);
 
     try {
-      const response = await ProductService.createProduct(productForm);
-      alert("Product created successfully!");
-      handleReset();
-      navigate("/get-product");
-      console.log(response);
+      await ProductService.updateProduct(id, productForm);
+      alert("Product updated successfully!");
     } catch (error) {
-      console.error("Error creating product:", error);
+      console.error("Error updating product:", error);
+      alert("Failed to update product. Please try again.");
     }
   };
 
+  useEffect(() => {
+    const fetchProductById = async () => {
+      try {
+        const data = await ProductService.getProductById(id);
+        setProductForm(data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+    fetchProductById();
+  }, [id]);
+
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
-      <h1 className="text-2xl font-semibold">Add Product</h1>
+      <h1 className="text-2xl font-semibold">Edit Product</h1>
       <form
         className="w-[30%] mx-auto my-10 space-y-4"
         onSubmit={handleSubmit}
@@ -101,7 +102,7 @@ const CreateProduct = () => {
             type="submit"
             className="px-4 py-2 text-white bg-green-500 rounded"
           >
-            Submit
+            Update
           </button>
           <button
             type="reset"
@@ -115,4 +116,4 @@ const CreateProduct = () => {
   );
 };
 
-export default CreateProduct;
+export default UpdateProduct;
