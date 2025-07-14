@@ -4,7 +4,7 @@ const ControlledComponents = () => {
   const [email, setEmail] = useState("");
 
   const handleChange = (event) => {
-    console.log(event, "event");
+    // console.log(event, "event");
     setEmail(event.target.value);
   };
 
@@ -47,16 +47,18 @@ const ControlledComponents2 = () => {
   });
 
   const handleChange = (event) => {
-    console.log(event.target.name, event.target.value, "event");
-    const data = { ...formData, [event.target.name]: event.target.value };
-    console.log(data, "data");
-    setFormData(data);
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData, "formData");
   };
 
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
       <h1>Controlled Form</h1>
-      <form className="w-[40%] mx-auto my-10 space-y-4">
+      <form className="w-[40%] mx-auto my-10 space-y-4" onSubmit={handleSubmit}>
         <input
           placeholder="Enter email"
           type="email"
@@ -93,9 +95,11 @@ const ControlledComponents2 = () => {
           value={formData.address}
           onChange={handleChange}
         ></textarea>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
 };
 
-export default ControlledComponents;
+export default ControlledComponents2;
