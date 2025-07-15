@@ -19,7 +19,8 @@ const Login = () => {
 
     try {
       const response = await AuthService.login(formData);
-      console.log(response);
+      const { token } = response;
+      localStorage.setItem("token", JSON.stringify(token));
       alert("Login successfully!");
     } catch (error) {
       console.error(error);

@@ -14,6 +14,7 @@ import GetProduct from "./CRUD/GetProduct";
 import UpdateProduct from "./CRUD/UpdateProduct";
 import Signup from "./Auth/Signup";
 import Login from "./Auth/Login";
+import PrivateRoute from "./PrivateRoute";
 
 const Routers = () => {
   return (
@@ -35,12 +36,14 @@ const Routers = () => {
       <Route path="/controlled" element={<ControlledComponents />} />
       <Route path="/uncontrolled" element={<UncontrolledComponents />} />
       {/* CRUD */}
-      <Route path="/create-product" element={<CreateProduct />} />
-      <Route path="/get-product" element={<GetProduct />} />
-      <Route path="/update-product/:id" element={<UpdateProduct />} />
-
       <Route path="/auth/signup" element={<Signup />} />
       <Route path="/auth/login" element={<Login />} />
+
+      <Route element={<PrivateRoute />}>
+        <Route path="/create-product" element={<CreateProduct />} />
+        <Route path="/get-product" element={<GetProduct />} />
+        <Route path="/update-product/:id" element={<UpdateProduct />} />
+      </Route>
     </Routes>
   );
 };
