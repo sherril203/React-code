@@ -7,9 +7,9 @@ const {
   updateProductById,
   deleteProductById,
 } = require("../controller/product.controller");
-// const { validateToken } = require("../middleware/authToken");
+const { validateToken } = require("../middleware/authToken");
 
-// router.use(validateToken);
+router.use(validateToken);
 
 router
   .post("/", createProduct)
